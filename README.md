@@ -1,160 +1,104 @@
-# Customer Lifetime Value (CLTV) Prediction Project
+<div align="center">
 
-## 1. Overview
+# CUSTOMER LIFETIME VALUE (CLTV) ANALYSIS
 
-This project aims to calculate and predict Customer Lifetime Value (CLTV) using a dataset from an e-commerce company. The project offers two fundamental approaches:
+### *Transforming Customer Data into Valuable Marketing Strategies*
 
-1.  **Heuristic CLTV Calculation (`cltv.py`):** This script calculates CLTV based on key metrics derived from customers' past purchasing behavior, such as Average Order Value and Purchase Frequency.
-2.  **Probabilistic CLTV Prediction (`cltv_prediction.py`):** This script uses statistical models like BG/NBD (Beta Geometric/Negative Binomial Distribution) and Gamma-Gamma to predict future purchasing behavior and the estimated value customers will generate.
+</div>
 
-The primary goal of the project is to segment customers based on their value, enabling personalized marketing strategies, more efficient resource allocation, and increased customer loyalty.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/Pandas-2.x-blue?style=for-the-badge&logo=pandas" alt="Pandas">
+  <img src="https://img.shields.io/badge/Scikit--Learn-1.x-orange?style=for-the-badge&logo=scikit-learn" alt="Scikit-Learn">
+    <img src="https.img.shields.io/badge/Lifetimes-0.11%2B-yellow?style=for-the-badge" alt="Lifetimes">
+</p>
 
-## 2. Project Structure
+<p align="center">
+  This project offers two distinct methodologies to calculate and predict customer lifetime value.
+</p>
 
-The project consists of two main Python scripts:
+---
 
-* `cltv.py`: Contains all the necessary functions and steps to calculate CLTV using formulas based on historical data. This script provides a "snapshot" of value based on existing data.
-* `cltv_prediction.py`: Performs future-looking CLTV prediction using machine learning and probabilistic models (BG/NBD and Gamma-Gamma). It includes steps for data preprocessing, model building, and customer segmentation.
+### 📋 Table of Contents
 
-```
-CRM_ANALITICS-main/
-│
-├── cltv.py                # Heuristic CLTV calculation script
-├── cltv_prediction.py     # CLTV prediction script with BG/NBD and Gamma-Gamma
-├── datasets/
-│   └── online_retail_II.xlsx # Dataset used in the project
-└── README.md              # This file
-```
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Interpreting the Results](#-interpreting-the-results)
 
-## 3. Dataset
+---
 
-The project uses the **"Online Retail II"** dataset from the UCI Machine Learning Repository.
+### 📖 Overview
 
-* **Source:** [https://archive.ics.uci.edu/ml/datasets/Online+Retail+II](https://archive.ics.uci.edu/ml/datasets/Online+Retail+II)
-* **Description:** This dataset contains sales data from a UK-based online retail store between 01/12/2009 and 09/12/2011.
-* **Variables:** `InvoiceNo`, `StockCode`, `Description`, `Quantity`, `InvoiceDate`, `UnitPrice`, `CustomerID`, `Country`.
+This project aims to determine the **Customer Lifetime Value (CLTV)** for each customer by analyzing the data of an e-commerce company. The project includes both formula-based calculations based on historical data and probabilistic prediction models for future-looking insights. The ultimate goal is to identify the most valuable customer groups to steer marketing resources efficiently.
 
-## 4. Techniques and Models Used
+---
 
-Two different data science techniques are applied in this project to analyze CLTV.
+### ✨ Key Features
 
-### 4.1. Heuristic CLTV Calculation (`cltv.py`)
+The core capabilities offered by this project are:
 
-This approach is based on the sequential calculation of the following metrics:
-* **Average Order Value:** `Total Price / Total Transaction`
-* **Purchase Frequency:** `Total Transaction / Total Number of Customers`
-* **Repeat Rate & Churn Rate:** Calculated based on the ratio of customers who have made more than one purchase.
-* **Profit Margin:** Assumed to be a specific percentage of the total price (10% in the project).
-* **Customer Value:** `Average Order Value * Purchase Frequency`
-* **Customer Lifetime Value:** `(Customer Value / Churn Rate) * Profit Margin`
+* **📊 Two Different Approaches:** It provides both CLTV calculation with definitive historical metrics (`cltv.py`) and statistical predictions for the future (`cltv_prediction.py`).
 
-### 4.2. Probabilistic CLTV Prediction (`cltv_prediction.py`)
+* **📈 Probabilistic Modeling:** It uses industry-standard **BG/NBD** and **Gamma-Gamma** models to predict future customer behavior.
 
-This advanced approach uses two core probabilistic models to understand each customer's purchasing and spending habits:
+* **📉 Customer Segmentation:** It segments customers into groups like `A`, `B`, `C`, and `D` based on their CLTV scores, enabling the creation of targeted marketing strategies for valuable, potential, or at-risk customers.
 
-* **BG/NBD Model (Beta Geometric/Negative Binomial Distribution):**
-    * **Purpose:** Models the transaction behavior of customers. It predicts the probability of a customer being "alive" and making a purchase within a given period.
-    * **Output:** The **expected number of purchases** for a specific future period (e.g., 1 week, 1 month, 3 months).
+* **⚙️ Functional Code Structure:** All analysis and prediction processes are encapsulated within reusable functions like `create_cltv_c()` and `create_cltv_p()` for ease of use.
 
-* **Gamma-Gamma Model:**
-    * **Purpose:** Models the monetary value of customers' transactions. It predicts how much a customer is likely to spend on each transaction.
-    * **Prerequisite:** There should be no correlation between a customer's transaction frequency and their average monetary value.
-    * **Output:** The **expected average profit** for each customer.
+---
 
-By combining these two models, the CLTV for a specific time frame (e.g., 3 months) is predicted for each customer.
+### 🚀 Installation
 
-## 5. Requirements
+Follow the steps below to run the project on your local machine.
 
-To run this project, you will need the following Python libraries:
+#### Prerequisites
+* Python 3.8+
+* Pip Package Manager
 
-* pandas
-* numpy
-* scikit-learn
-* matplotlib
-* seaborn
-* lifetimes
+#### Steps
 
-## 6. Installation
-
-1.  Clone the project to your local machine:
-    ```bash
+1.  **Clone the repository:**
+    ```sh
     git clone [https://github.com/your-username/CRM_ANALITICS-main.git](https://github.com/your-username/CRM_ANALITICS-main.git)
     ```
 
-2.  Navigate to the project directory:
-    ```bash
+2.  **Navigate to the project directory:**
+    ```sh
     cd CRM_ANALITICS-main
     ```
 
-3.  Install the required libraries using a `requirements.txt` file or individually.
+3.  **Install the required libraries:**
+    ```sh
+    pip install pandas numpy scikit-learn matplotlib seaborn lifetimes openpyxl
+    ```
 
-    * **Installation via requirements.txt:**
-        ```txt
-        # requirements.txt
-        pandas
-        numpy
-        scikit-learn
-        matplotlib
-        seaborn
-        lifetimes
-        openpyxl 
-        ```
-        ```bash
-        pip install -r requirements.txt
-        ```
+---
 
-    * **Individual installation:**
-        ```bash
-        pip install pandas numpy scikit-learn matplotlib seaborn lifetimes openpyxl
-        ```
+### 💻 Usage
 
-## 7. Usage
+The project is run via two main scripts. Each script applies its respective analysis method and saves the results as a `.csv` file.
 
-Both scripts can be run directly. Before running the scripts, ensure that the `online_retail_II.xlsx` file is located in the `datasets` folder.
+1.  **For Heuristic CLTV Calculation:**
+    *This script performs the formula-based CLTV calculation.*
+    ```sh
+    python cltv.py
+    ```
 
-### Example 1: Heuristic CLTV Calculation
+2.  **For Probabilistic CLTV Prediction:**
+    *This script makes future predictions using the BG/NBD and Gamma-Gamma models.*
+    ```sh
+    python cltv_prediction.py
+    ```
 
-The `cltv.py` script reads the dataset, calculates the CLTV metrics, and saves the results to a file named `cltc_c.csv`. The `create_cltv_c` function at the end of the script summarizes the entire process:
+---
 
-```python
-# A snippet from cltv.py
-import pandas as pd
+### 🧠 Interpreting the Results
 
-df_ = pd.read_excel("crm_analitics/datasets/online_retail_II.xlsx", sheet_name="Year 2009-2010")
-df = df_.copy()
+The output of both scripts divides customers into 4 segments based on their CLTV scores. These segments help shape your marketing strategies:
 
-# Create a dataframe with CLTV calculations using the function
-cltv_dataframe = create_cltv_c(df, profit=0.10)
-print(cltv_dataframe.head())
-```
-
-### Example 2: Probabilistic CLTV Prediction
-
-The `cltv_prediction.py` script trains the BG/NBD and Gamma-Gamma models, predicts the 3-month CLTV, and saves the results to the `cltv_prediction.csv` file. The `create_cltv_p` function automates this process:
-
-```python
-# A snippet from cltv_prediction.py
-import pandas as pd
-
-df_ = pd.read_excel("crm_analitics/datasets/online_retail_II.xlsx", sheet_name="Year 2010-2011")
-df = df_.copy()
-
-# Make a 3-month CLTV prediction using the function
-cltv_prediction_dataframe = create_cltv_p(df, month=3)
-print(cltv_prediction_dataframe.head())
-```
-
-## 8. Interpreting the Results
-
-The output of both scripts segments customers based on their CLTV scores. The `segment` column in the output CSV files divides customers into 4 groups: **A, B, C, and D**.
-
-* **Segment A (Champions):** The most valuable customer group. These customers are loyal and provide the highest revenue.
-    * **Action:** Focus on retaining these customers with reward programs, exclusive offers, and VIP services.
-* **Segment B (Loyal Customers):** Valuable customers who make regular purchases.
-    * **Action:** Campaigns can be designed to increase their spending through upselling and cross-selling opportunities.
-* **Segment C (Potential/At-Risk):** Customers with moderate value but at risk of churning.
-    * **Action:** Their loyalty can be increased with personalized discounts and re-engagement campaigns.
-* **Segment D (Hibernating/Lost):** The least valuable group. They may not have made a purchase in a long time.
-    * **Action:** Avoid high-cost marketing activities for this group; attempt to win them back with low-cost, general campaigns.
-
-This segmentation helps business analysts and marketing teams to approach the right customer with the right strategy at the right time.
+* **Segment A (Champions):** Your most valuable customers. Reward them and provide exclusive offers.
+* **Segment B (Loyal Customers):** Regular shoppers. Ideal for cross-selling and upselling opportunities.
+* **Segment C (Potential Customers):** A group that needs personalized campaigns to be won back or retained.
+* **Segment D (At-Risk / Lost):** Low-value or long-inactive customers. Engage with low-cost campaigns.
