@@ -10,7 +10,6 @@
   <img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python" alt="Python">
   <img src="https://img.shields.io/badge/Pandas-2.x-blue?style=for-the-badge&logo=pandas" alt="Pandas">
   <img src="https://img.shields.io/badge/Scikit--Learn-1.x-orange?style=for-the-badge&logo=scikit-learn" alt="Scikit-Learn">
-    <img src="https.img.shields.io/badge/Lifetimes-0.11%2B-yellow?style=for-the-badge" alt="Lifetimes">
 </p>
 
 <p align="center">
